@@ -10,17 +10,17 @@ add service-name=pppoe_service interface=ether2 disabled=no
 /ppp profile
 add name=pppoe-active local-address=10.1.1.1 remote-address=pppoe-active rate-limit=5M/5M
 
-/ppp
-add name=pppoe-expired local-address=10.1.1.1 remote-address=pppoe-expired
+/ppp profile
+add name=pppoe-expired local-address=10.1.1.1 remote-address=pppoe-expired address-list=pppoe-expired
 
 /ppp secret
-add name=user1 password=123 profile=pppoe-active
+add name=user1 password=123 profile=pppoe-active service=pppoe
 
 /ip proxy
 set enabled=yes port=8080
 
 /ip firewall nat
-add chain=dstnat src-address-list=isolir protocol=tcp dst-port=80 action=redirect to-ports=8080
+add chain=dstnat src-address-list=pppoe-expired protocol=tcp dst-port=80 action=redirect to-ports=8080
 
 /ip proxy access
 add src-address=10.1.2.0/24 action=deny
