@@ -32,4 +32,4 @@ set time-zone-name=Asia/Jakarta
 add chain=forward protocol=tcp dst-port=443 src-address-list=pppoe-expired action=drop
 
 /system scheduler
-add name=user1 start-time=12:00:00 on-event="/ppp secret set user1 profile=pppoe-expired; /ppp active remove [find name=user1]; /ip firewall filter remove [find];
+add name=user1 start-time=12:00:00 on-event="/ppp secret set user1 profile=pppoe-expired; /ppp active remove [find name=user1]; /ip firewall filter remove [find];"
