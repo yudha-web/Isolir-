@@ -24,3 +24,6 @@ add chain=dstnat src-address-list=pppoe-expired protocol=tcp dst-port=80 action=
 
 /ip proxy access
 add src-address=10.1.2.0/24 action=deny
+
+/system clock
+set time-zone-name=Asia/Jakarta
