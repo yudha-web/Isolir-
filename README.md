@@ -35,5 +35,5 @@ add chain=forward protocol=tcp dst-port=443 src-address-list=pppoe-expired actio
 add name=user1 start-time=00:00:00 on-event="
 /ppp secret set user1 profile=pppoe-expired; 
 /ppp active remove [find name=user1]; 
-/interface pppoe-client disable pppoe-user1
+/interface pppoe-client disable pppoe-user1;
 /interface pppoe-client remove [find name=pppoe-user1];"
